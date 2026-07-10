@@ -15,7 +15,7 @@ import java.net.URL;
 public class SMSReceiver extends BroadcastReceiver {
     
     private static final String API_URL = "https://plndmqvlkchbtcfeoson.supabase.co/functions/v1/sms-reply";
-    private static final String API_KEY = "YOUR_API_KEY_HERE";
+    private static final String API_KEY = "xkFCkWe7drKKxkeCbGF2e2gkZcGOIVRaSDW0vzEk";
     
     @Override
     public void onReceive(Context context, Intent intent) {
