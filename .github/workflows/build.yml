@@ -13,19 +13,13 @@ jobs:
           
       - name: Setup Android SDK
         run: |
-          sudo apt-get update
-          sudo apt-get install -y wget unzip
           wget https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
           unzip commandlinetools-linux-* -d android-sdk
-          yes | android-sdk/cmdline-tools/bin/sdkmanager --sdk_root=$ANDROID_SDK_ROOT --licenses
-          android-sdk/cmdline-tools/bin/sdkmanager --sdk_root=$ANDROID_SDK_ROOT "platforms;android-34" "build-tools;34.0.0"
-        env:
-          ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
-          
+          yes | android-sdk/cmdline-tools/bin/sdkmanager --licenses
+          android-sdk/cmdline-tools/bin/sdkmanager "platforms;android-34" "build-tools;34.0.0"
+
       - name: Build APK
-        run: |
-          chmod +x gradlew
-          ./gradlew assembleRelease
+        run: gradle assembleRelease
         working-directory: android
         
       - uses: actions/upload-artifact@v4
