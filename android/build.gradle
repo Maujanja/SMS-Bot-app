@@ -1,9 +1,24 @@
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
+apply plugin: "com.android.application"
+
+android {
+    namespace "com.brimedge.smsbot"
+    compileSdkVersion 34
+    
+    defaultConfig {
+        applicationId "com.brimedge.smsbot"
+        minSdkVersion 24
+        targetSdkVersion 34
+        versionCode 1
+        versionName "1.0"
     }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:8.2.0'
+    
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
     }
+}
+
+dependencies {
+    implementation 'androidx.core:core:1.12.0'
 }
