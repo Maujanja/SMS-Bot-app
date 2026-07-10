@@ -11,15 +11,15 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           
-      - name: Setup Android SDK
-        run: |
-          wget https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
-          unzip commandlinetools-linux-* -d android-sdk
-          yes | android-sdk/cmdline-tools/bin/sdkmanager --licenses
-          android-sdk/cmdline-tools/bin/sdkmanager "platforms;android-34" "build-tools;34.0.0"
-
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+        
+      - name: Make gradlew executable
+        run: chmod +x gradlew
+        working-directory: android
+        
       - name: Build APK
-        run: gradle assembleRelease
+        run: ./gradlew assembleRelease
         working-directory: android
         
       - uses: actions/upload-artifact@v4
