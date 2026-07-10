@@ -1,12 +1,13 @@
 apply plugin: "com.android.application"
 
 android {
-    compileSdkVersion 34
+    namespace "com.brimedge.smsbot"
+    compileSdkVersion rootProject.ext.compileSdkVersion
     
     defaultConfig {
         applicationId "com.brimedge.smsbot"
-        minSdkVersion 24
-        targetSdkVersion 34
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
     }
@@ -14,6 +15,8 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            debuggable false
+            signingConfig signingConfigs.debug
         }
     }
 }
